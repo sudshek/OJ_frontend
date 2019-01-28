@@ -72,21 +72,15 @@ export default class login extends Component {
       errorMessage
     } = this.state;
     var mystyle = {
-      backgroundColor: "#ebebe0",
-      
+      backgroundColor: "#ebebe0"
     };
     if (this.state.redirection) {
       return <Redirect to="" />;
     }
     return (
-<<<<<<< HEAD
       <div>
         <HeaderCustom />
         <div style={mystyle}>
-=======
-      <div className= "LoginBox">
-        <div >
->>>>>>> f0bb2352ad29d884a71f8871059ab5b67a6d98e3
           <Responsive minWidth={1125}>
             <br />
             <br />
@@ -97,7 +91,7 @@ export default class login extends Component {
             <Grid.Column computer={5} mobile={16}>
               <Form size="large" onSubmit={this.handleSubmit}>
                 <Segment stacked>
-                <h1>Sign Up!</h1>
+                  <h1>Sign Up!</h1>
                   <Form.Input
                     fluid
                     icon="user"

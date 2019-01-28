@@ -19,11 +19,11 @@ export default class Header1 extends Component {
     return (
       <div className="container-fluid">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to={"/"} className="navbar-brand">
+          <Link to={"/"} className="navbar-brand marginLeft">
             Online Judge
           </Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto headerNav">
+            <ul className="navbar-nav  headerNav">
               <li className="nav-item">
                 <Link to={"/"} className="nav-link">
                   Home
@@ -34,7 +34,7 @@ export default class Header1 extends Component {
                   Login
                 </Link>
               </li>
-              <li className="nav-item left">
+              <li className="nav-item right">
                 <Link to={"/signup"} className="nav-link">
                   SignUp
                 </Link>
