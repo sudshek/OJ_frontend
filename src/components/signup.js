@@ -31,11 +31,18 @@ export default class login extends Component {
   handleClose = () => this.setState({ active: false });
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.username.length < 1 || this.state.password.length < 1) {
+    if (this.state.username.length < 1 || this.state.password.length < 1|| this.state.name.length<1 || this.state.confirm_password.length<1 ) {
       this.setState({ errorHeader: "Field is Empty" });
       this.setState({ errorMessage: "All Fields are Required!" });
       this.setState({ active: true });
-    } else {
+    }
+    else if(this.state.confirm_password != this.state.password){
+      this.setState({
+        errorHeader:"Passwords Dont Match",
+        errorMessage:"Passwords dont match"
+      });
+    }
+     else {
       fetch("http://localhost:8080/user/", {
         method: "POST",
         headers: {
@@ -44,7 +51,10 @@ export default class login extends Component {
         },
         body: JSON.stringify({
           username: this.state.username,
-          password: this.state.password
+          password: this.state.password, 
+          name : this.state.name,
+          email:this.state.email,
+          
         })
       })
         .then(response => response.json())
@@ -67,6 +77,9 @@ export default class login extends Component {
     const {
       username,
       password,
+      email, 
+      name, 
+      confirm_password,
       active,
       errorHeader,
       errorMessage
@@ -78,15 +91,10 @@ export default class login extends Component {
       return <Redirect to="" />;
     }
     return (
-<<<<<<< HEAD
-      <div className="LoginBox">
-        <HeaderCustom />
-        <div>
-=======
-      <div>
-        <HeaderCustom />
-        <div style={mystyle}>
->>>>>>> 11740aefb4099a7b002e2dcee92e290b82ea3773
+      
+      <div >
+       <HeaderCustom />
+        <div className="LoginBox">
           <Responsive minWidth={1125}>
             <br />
             <br />
@@ -102,12 +110,31 @@ export default class login extends Component {
                     fluid
                     icon="user"
                     iconPosition="left"
+                    placeholder="Full Name"
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={this.handleChange}
+                  />
+                  <Form.Input
+                    fluid
+                    icon="user"
+                    iconPosition="left"
                     placeholder="username"
                     name="username"
                     value={username}
                     onChange={this.handleChange}
                   />
-
+                  <Form.Input
+                    fluid
+                    icon="mail"
+                    iconPosition="left"
+                    placeholder="email"
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={this.handleChange}
+                  />
                   <Form.Input
                     fluid
                     icon="lock"
@@ -118,6 +145,19 @@ export default class login extends Component {
                     value={password}
                     onChange={this.handleChange}
                   />
+                  
+                  <Form.Input
+                    fluid
+                    icon="lock"
+                    iconPosition="left"
+                    placeholder="Confirm Password"
+                    type="password"
+                    name="confirm_password"
+                    value={confirm_password}
+                    onChange={this.handleChange}
+                  />
+                  
+                 
                   <Form.Button type="submit" color="teal" fluid size="large">
                     Signup
                   </Form.Button>
