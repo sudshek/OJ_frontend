@@ -37,10 +37,19 @@
 	display:none;}
 	</style>
   </head>
+  <script>
+    function dummy(){
+      console.log("DUMMY");
+      $.get("http://localhost:8080/user", function(data, status){
+    console.log(data);
+  });
+    }
+  </script>
   <body  ="black">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <button id="dummy" onclick="dummy()">Dummy</button>
     <div id="root"></div>
     <!--
       This HTML file is a template.
