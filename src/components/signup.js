@@ -15,6 +15,8 @@ import {
 } from "semantic-ui-react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router";
+import HeaderCustom from "./header";
+
 // import {Link} from 'react-router-dom';
 import signup from "./signup";
 export default class login extends Component {
@@ -77,6 +79,7 @@ export default class login extends Component {
     }
     return (
       <div>
+        <HeaderCustom />
         <div style={mystyle}>
           <Responsive minWidth={1125}>
             <br />
