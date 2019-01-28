@@ -11,3 +11,20 @@
 .styleloginsignup{
 padding-top:20px;
 }
+#root{
+  height:100%;
+  background-color: #F0F0F0;
+}
+.LoginBox{
+  display: grid;
+ 
+  height:100%;
+  align-items: center;
+  color:teal;
+  text-align: center;
+  grid-auto-columns: auto auto auto;
+  
+}
+.LoginBox h1{
+  text-align: center;
+}

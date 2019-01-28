@@ -78,8 +78,8 @@ export default class login extends Component {
       return <Redirect to="" />;
     }
     return (
-      <div>
-        <div style={mystyle}>
+      <div className="LoginBox">
+        <div >
           <Responsive minWidth={1125}>
             <br />
             <br />
@@ -88,8 +88,10 @@ export default class login extends Component {
           </Responsive>
           <Grid centered>
             <Grid.Column computer={5} mobile={16}>
+               
               <Form size="large" onSubmit={this.handleSubmit}>
                 <Segment stacked>
+                <h1>Login</h1>
                   <Form.Input
                     fluid
                     icon="user"
