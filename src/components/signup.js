@@ -79,14 +79,9 @@ export default class login extends Component {
       return <Redirect to="" />;
     }
     return (
-<<<<<<< HEAD
-      <div>
+      <div className="LoginBox">
         <HeaderCustom />
-        <div style={mystyle}>
-=======
-      <div className= "LoginBox">
-        <div >
->>>>>>> f0bb2352ad29d884a71f8871059ab5b67a6d98e3
+        <div>
           <Responsive minWidth={1125}>
             <br />
             <br />
