@@ -54,7 +54,7 @@ export default class login extends Component {
           password: this.state.password, 
           name : this.state.name,
           email:this.state.email,
-          
+
         })
       })
         .then(response => response.json())
@@ -92,8 +92,9 @@ export default class login extends Component {
     }
     return (
       
-      <div >
-       <HeaderCustom />
+     
+      <div>
+        <HeaderCustom />
         <div className="LoginBox">
           <Responsive minWidth={1125}>
             <br />

@@ -19,7 +19,7 @@ export default class Header1 extends Component {
     return (
       <div className="container-fluid">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to={"/"} className="navbar-brand marginLeft">
+          <Link to={"/"} className="navbar-brand">
             Online Judge
           </Link>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
