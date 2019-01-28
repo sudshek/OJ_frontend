@@ -92,6 +92,7 @@ export default class login extends Component {
             <Grid.Column computer={5} mobile={16}>
               <Form size="large" onSubmit={this.handleSubmit}>
                 <Segment stacked>
+                  <h1>Login</h1>
                   <Form.Input
                     fluid
                     icon="user"
