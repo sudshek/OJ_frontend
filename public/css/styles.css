@@ -27,3 +27,17 @@
 .LoginBox h1 {
   text-align: center;
 }
+.padder {
+  margin: 1em;
+}
+.styleloginsignup {
+  padding-top: 20px;
+}
+
+#navbarSupportedContent {
+  margin-left: 75%;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
