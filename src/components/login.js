@@ -16,7 +16,7 @@ import {
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router";
 // import {Link} from 'react-router-dom';
-import signup from "./signup";
+
 export default class login extends Component {
   state = {
     username: "",
@@ -26,15 +26,17 @@ export default class login extends Component {
   handleChange = (e, { name, value }) => {
     this.setState({ [name]: value });
   };
+
   handleClose = () => this.setState({ active: false });
   handleSubmit = e => {
-    e.preventDefault();
     if (this.state.username.length < 1 || this.state.password.length < 1) {
       this.setState({ errorHeader: "Field is Empty" });
       this.setState({ errorMessage: "All Fields are Required!" });
       this.setState({ active: true });
     } else {
-      fetch("http://localhost:8080/user/", {
+      console.log("HIIII  LOGGGING");
+      console.log(this.state.username);
+      fetch("http://localhost:8080/user/login", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -47,7 +49,6 @@ export default class login extends Component {
       })
         .then(response => response.json())
         .then(responseJson => {
-          console.log("ResponseJson");
           console.log(responseJson);
         })
         .catch(error => {
@@ -72,6 +73,7 @@ export default class login extends Component {
     var mystyle = {
       backgroundColor: "#ebebe0"
     };
+
     if (this.state.redirection) {
       return <Redirect to="" />;
     }
@@ -109,11 +111,20 @@ export default class login extends Component {
                     onChange={this.handleChange}
                   />
                   <Form.Button type="submit" color="teal" fluid size="large">
-                    Signup
+                    Login
                   </Form.Button>
                 </Segment>
-                <Segment>{errorMessage}</Segment>
               </Form>
+              <Segment>
+                <center>
+                  {" "}
+                  New to us?{" "}
+                  <Link to={"/signup"}>
+                    <b>Sign Up</b>
+                  </Link>
+                </center>
+              </Segment>
+              <Segment>{errorMessage}</Segment>
             </Grid.Column>
           </Grid>
         </div>
