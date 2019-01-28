@@ -59,8 +59,28 @@ export default class login extends Component {
       })
         .then(response => response.json())
         .then(responseJson => {
-          console.log("ResponseJson");
-          console.log(responseJson);
+          if(responseJson.success==1)
+          {  
+            this.setState({
+              redirection:true
+            });
+            
+          }
+
+          else {
+            if(responseJson.message=="Username Exists")
+            this.setState({
+              errorHeader:"Username Exists",
+              errorMessage:"Please Try some other username"
+            });
+            else if(responseJson.message=="Email Exists")
+            {
+              this.setState({
+                errorHeader: responseJson.message,
+                errorMessage:"The email is already registered"
+              })
+            }
+          }
         })
         .catch(error => {
           console.log(error);
@@ -88,7 +108,7 @@ export default class login extends Component {
       backgroundColor: "#ebebe0"
     };
     if (this.state.redirection) {
-      return <Redirect to="" />;
+      return <Redirect to="/login" />;
     }
     return (
       

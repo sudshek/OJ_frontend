@@ -50,7 +50,11 @@ export default class login extends Component {
       })
         .then(response => response.json())
         .then(responseJson => {
-          console.log(responseJson);
+          if(responseJson.success==1)
+          this.setState({redirection:true})
+          else{
+            this.setState({errorMessage:"Username or Password Wrong"});
+          }
         })
         .catch(error => {
           console.log(error);
