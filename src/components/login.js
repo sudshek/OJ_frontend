@@ -16,6 +16,7 @@ import {
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import HeaderCustom from "./header";
+import axios from "axios";
 // import {Link} from 'react-router-dom';
 
 export default class login extends Component {
@@ -37,33 +38,35 @@ export default class login extends Component {
     } else {
       console.log("HIIII  LOGGGING");
       console.log(this.state.username);
-      fetch("http://localhost:8080/user/login", {
-        method: "POST",
+      // axios
+      //   .post("http://localhost:8080/user/login", {
+      //     username: this.state.username,
+      //     password: this.state.password,
+      //     withCredentials: true
+      //   })
+      //   .then(response => {
+      //     console.log(response);
+      //   });
+      const login_axios = axios.create({
+        withCredentials: true,
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "x-www-form-urlencoded"
         },
-        body: JSON.stringify({
+        params: {
           username: this.state.username,
           password: this.state.password
+        }
+      });
+      login_axios
+        .post("http://localhost:8080/user/login")
+        .then(function(response) {
+          console.log("RESPONSE");
+          console.log(response);
         })
-      })
-        .then(response => response.json())
-        .then(responseJson => {
-          if(responseJson.success==1)
-          this.setState({redirection:true})
-          else{
-            this.setState({errorMessage:"Username or Password Wrong"});
-          }
-        })
-        .catch(error => {
+        .catch(function(error) {
+          console.log("ERROR");
           console.log(error);
-          console.log("erooooooooooooooor");
-          this.setState({
-            active: true,
-            errorHeader: "error!",
-            errorMessage: "an unexpected error occured"
-          });
         });
     }
   };
@@ -83,7 +86,7 @@ export default class login extends Component {
       return <Redirect to="" />;
     }
     return (
-      <div >
+      <div>
         <HeaderCustom />
         <div className="LoginBox">
           <Responsive minWidth={1125}>

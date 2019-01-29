@@ -37,19 +37,32 @@
 	display:none;}
 	</style>
   </head>
-  <script>
+  <!-- <script>
     function dummy(){
       console.log("DUMMY");
-      $.get("http://localhost:8080/user", function(data, status){
-    console.log(data);
-  });
+  //     $.get({"http://localhost:8080/user",
+  //     xhrFields: {
+  //     withCredentials: true
+  //  },
+  //      function(data, status){
+  //   console.log(data);
+  // });
+  $.get({
+   url: "http://localhost:8080/user",
+   xhrFields: {
+      withCredentials: true
+   }
+}).done((response)=>{
+  console.log("DUMMY RESPONSE");
+  console.log(response);
+});
     }
-  </script>
+  </script> -->
   <body  ="black">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
-    <button id="dummy" onclick="dummy()">Dummy</button>
+    <!-- <button id="dummy" onclick="dummy()">Dummy</button> -->
     <div id="root"></div>
     <!--
       This HTML file is a template.
