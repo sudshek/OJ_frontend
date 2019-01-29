@@ -36,17 +36,9 @@ export default class login extends Component {
       this.setState({ errorMessage: "All Fields are Required!" });
       this.setState({ active: true });
     } else {
-      console.log("HIIII  LOGGGING");
+    
       console.log(this.state.username);
-      // axios
-      //   .post("http://localhost:8080/user/login", {
-      //     username: this.state.username,
-      //     password: this.state.password,
-      //     withCredentials: true
-      //   })
-      //   .then(response => {
-      //     console.log(response);
-      //   });
+      
       const login_axios = axios.create({
         withCredentials: true,
         headers: {
@@ -58,10 +50,27 @@ export default class login extends Component {
           password: this.state.password
         }
       });
+      var self = this;
       login_axios
-        .post("http://localhost:8080/user/login")
+        .post("http://localhost:8080/user/login") 
         .then(function(response) {
-          console.log("RESPONSE");
+         // console.log("RESPONSE");
+          response = response.data;
+          console.log(response);
+          
+          if(response.success==0)
+          {
+            self.setState({
+              errorMessage:"Username or Password wrong"
+            })
+          }
+          if(response.success==1)
+          {
+            self.setState(
+            {  redirection:true,
+                username:response.user.username}
+            )
+          }
           console.log(response);
         })
         .catch(function(error) {
@@ -83,11 +92,11 @@ export default class login extends Component {
     };
 
     if (this.state.redirection) {
-      return <Redirect to="" />;
+      return <Redirect to="/" />;
     }
     return (
       <div>
-        <HeaderCustom />
+        <HeaderCustom loggedin={this.state.redirection} username={this.state.username} />
         <div className="LoginBox">
           <Responsive minWidth={1125}>
             <br />
