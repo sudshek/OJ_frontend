@@ -17,15 +17,24 @@ class Ide extends Component {
     this.state.code = newValue;
     console.log("CODE  ", this.state.code);
   }
+  handleSubmit = () => {
+    console.log("CODE SUBMITTTED");
+    console.log(this.state.code);
+    //code_set is the function that has to be passed by the parent component.
+    this.props.code_set(this.state.code);
+  };
   render() {
     return (
-      <AceEditor
-        mode="c_cpp"
-        theme="monokai"
-        onChange={this.onChange}
-        name="UNIQUE_ID_OF_DIV"
-        editorProps={{ $blockScrolling: true }}
-      />
+      <div>
+        <AceEditor
+          mode="c_cpp"
+          theme="monokai"
+          onChange={this.onChange}
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+        />
+        <button onClick={this.handleSubmit}>Submit</button>
+      </div>
     );
   }
 }
