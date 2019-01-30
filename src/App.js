@@ -6,6 +6,9 @@ import Index from "./components/index";
 import signup from "./components/signup";
 import homepage from "./components/homepage";
 import login from "./components/login";
+import ProblemSet from "./components/problemset";
+import Ide from "./components/ide";
+import Problem from "./components/problem";
 
 class App extends Component {
   render() {
@@ -16,6 +19,9 @@ class App extends Component {
           <Route path="/index" component={Index} />
           <Route path="/login" component={login} />
           <Route path="/signup" component={signup} />
+          <Route path="/problemset" component={ProblemSet} />
+          <Route path="/ide" component={Ide} />
+          <Route path="/problem/:qid" component={Problem} />
         </Switch>
       </Router>
     );

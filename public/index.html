@@ -2,19 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#f44236">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" type="text/css" href="/semantic-ui-css/semantic.min.css"/>
-	<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-  <script src="lodash.js"></script>
-<script src="semantic-ui-css/semantic.min.js"></script><!--
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#f44236" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/semantic-ui-css/semantic.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="lodash.js"></script>
+
+    <script src="semantic-ui-css/semantic.min.js"></script>
+    <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     
@@ -32,10 +50,23 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Online Judge</title>
-	<style>
-	.hidet{
-	display:none;}
-	</style>
+    <style>
+      .hidet {
+        display: none;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style type="text/css" media="screen">
+      #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 50px;
+      }
+    </style>
   </head>
   <!-- <script>
     function dummy(){
@@ -58,10 +89,8 @@
 });
     }
   </script> -->
-  <body  ="black">
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+  <body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
     <!-- <button id="dummy" onclick="dummy()">Dummy</button> -->
     <div id="root"></div>
     <!--
@@ -74,6 +103,16 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/monokai");
+      editor.session.setMode("ace/mode/c_cpp");
+    </script>
   </body>
   <!--<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
   <script>
@@ -89,5 +128,4 @@
       }
     }]);
   </script>!-->
-  
 </html>
