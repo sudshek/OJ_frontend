@@ -13,7 +13,8 @@ class Problem extends Component {
     correct_submission: "",
     submitted_code: ""
   };
-  componentDidMount() {
+  
+  componentDidMount = () => {
     console.log(this.props.match.params.qid);
     const { qid } = this.props.match.params;
     console.log("QID", qid);
@@ -29,7 +30,7 @@ class Problem extends Component {
     })
       .then(function(data) {
         data.json().then(value => {
-          console.log(value.question.text);
+          console.log(value.question.question_id);
           self.setState({
             question_id: value.question.question_id,
             text: value.question.text,
@@ -53,7 +54,7 @@ class Problem extends Component {
       clientSecret:
         "61863b5c2bf62d8898dbb62630a961ec8c14c8e3c6ba2f91759d2d5a391e7b06"
     };
-    request(
+    fetch(
       {
         url: "https://api.jdoodle.com/execute",
         method: "POST",
@@ -78,16 +79,17 @@ class Problem extends Component {
   };
 
   render() {
+    const {question_id} = this.state;
     return (
       <div>
-        <p>ID: {this.state.question_id}</p>
+        <p>ID: {question_id}</p>
         <p>Q. {this.state.text}</p>
         <p>Sample Test Cases: {this.state.test_cases}</p>
         <p>Total Submissions: {this.state.total_submission}</p>
         <p>Correct Submission: {this.state.correct_submission}</p>
         <p>Tags: {this.state.tags}</p>
         <p>Code submitted: {this.state.submitted_code}</p>
-        <Ide code_set={this.code_set} />
+        <Ide question_id = {this.state.question_id} />
       </div>
     );
   }
