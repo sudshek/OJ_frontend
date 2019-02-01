@@ -9,6 +9,8 @@ import login from "./components/login";
 import ProblemSet from "./components/problemset";
 import Ide from "./components/ide";
 import Problem from "./components/problem";
+import Profile from "./components/profile";
+import EditProfile from "./components/editProfile";
 
 class App extends Component {
   render() {
@@ -22,6 +24,8 @@ class App extends Component {
           <Route path="/problemset" component={ProblemSet} />
           <Route path="/ide" component={Ide} />
           <Route path="/problem/:qid" component={Problem} />
+          <Route path="/updateProfile" component={Profile} />
+          <Route path="/editProfile" component={EditProfile} />
         </Switch>
       </Router>
     );

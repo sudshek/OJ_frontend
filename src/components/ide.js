@@ -18,34 +18,13 @@ class Ide extends Component {
     this.state.code = newValue;
     console.log("CODE  ", this.state.code);
   }
-  handleJdoodle = code => {
-    var program = {
-      script: code,
-      language: "cpp",
-      versionIndex: "0",
-      clientId: "e1296a045c8fd205c2bc478cde607bf5",
-      clientSecret:
-        "61863b5c2bf62d8898dbb62630a961ec8c14c8e3c6ba2f91759d2d5a391e7b06"
-    };
-    request(
-      {
-        url: "https://api.jdoodle.com/execute",
-        method: "POST",
-        json: program
-      },
-      function(error, response, body) {
-        console.log("error:", error);
-        console.log("statusCode:", response && response.statusCode);
-        console.log("body:", body);
-      }
-    );
-  };
+  
   handleSubmit = () => {
     console.log("CODE SUBMITTTED");
     console.log(this.state.code);
     //code_set is the function that has to be passed by the parent component.
     this.props.code_set(this.state.code);
-    this.handleJdoodle(this.state.code);
+ 
   };
   render() {
     return (
