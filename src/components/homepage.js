@@ -19,7 +19,7 @@ export default class Homepage extends Component {
       }
     });
     console.log("asdasd00");
-    user_axios.get("http://localhost:8080/user/").then(function(response) {
+    user_axios.get("http://localhost:8080/user/").then(function (response) {
       response = response.data;
       console.log("RESPONSE", response);
       if (response.success === 0) {
@@ -54,7 +54,7 @@ export default class Homepage extends Component {
     });
     var self = this;
     console.log("asdasd00");
-    user_axios.get("http://localhost:8080/user/").then(function(response) {
+    user_axios.get("http://localhost:8080/user/").then(function (response) {
       response = response.data;
       console.log("RESPONSE", response);
       if (response.success === 0) {
