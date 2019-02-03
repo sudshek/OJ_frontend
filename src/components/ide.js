@@ -8,17 +8,16 @@ import axios from "axios";
 import querystring from "querystring";
 class Ide extends Component {
   state = {
-    code: "", 
-    errorMessage:""
+    code: "",
+    errorMessage: ""
   };
   constructor(props) {
     super(props);
-    console.log("CONSTRUCTION")
+    console.log("CONSTRUCTION");
     console.log(this.props);
     this.state.question_id = this.props.question_id;
-    
-    this.onChange = this.onChange.bind(this);
 
+    this.onChange = this.onChange.bind(this);
   }
   componentWillReceiveProps(props) {
     console.log("PROPS", props);
@@ -27,7 +26,6 @@ class Ide extends Component {
     //   username: props.username
     // });
     this.state.question_id = props.question_id;
-    
   }
   onChange(newValue) {
     // console.log("change", newValue);
@@ -35,9 +33,12 @@ class Ide extends Component {
     console.log("CODE  ", this.state.code);
   }
   handleSubmit = () => {
-    console.log("On Submit")
-    console.log(this.state.question_id, this.state.code)
-    var data = querystring.stringify({ question_id: this.state.question_id,code: this.state.code });
+    console.log("On Submit");
+    console.log(this.state.question_id, this.state.code);
+    var data = querystring.stringify({
+      question_id: this.state.question_id,
+      code: this.state.code
+    });
     var self = this;
     fetch("http://localhost:8080/question/execute", {
       credentials: "include",
@@ -46,22 +47,6 @@ class Ide extends Component {
         "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
       },
       body: data
-    }).then(function(data) {
-      data.json().then(value => {
-        console.log("JDOODLE KI MKC", value);
-        if(value.success===0)
-        { 
-           self.setState({
-             errorMessage:"Error/Try Again"
-           })  
-        }
-        else{
-          self.setState({
-            errorMessage: value.output
-          })
-        }
-        
-      });
     })
     .catch(function(error) {
       console.log("Request failed", error);
