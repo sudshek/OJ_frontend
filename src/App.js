@@ -11,7 +11,7 @@ import Ide from "./components/ide";
 import Problem from "./components/problem";
 import Profile from "./components/profile";
 import EditProfile from "./components/editProfile";
-
+import Contribute from "./components/contribute"
 class App extends Component {
   render() {
     return (
@@ -26,6 +26,7 @@ class App extends Component {
           <Route path="/problem/:qid" component={Problem} />
           <Route path="/updateProfile" component={Profile} />
           <Route path="/editProfile" component={EditProfile} />
+          <Route path="/contribute" component={Contribute} />
         </Switch>
       </Router>
     );

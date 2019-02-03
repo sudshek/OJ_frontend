@@ -34,7 +34,6 @@ class Ide extends Component {
     this.state.code = newValue;
     console.log("CODE  ", this.state.code);
   }
-<<<<<<< HEAD
   handleSubmit = () => {
     console.log("On Submit")
     console.log(this.state.question_id, this.state.code)
@@ -68,16 +67,6 @@ class Ide extends Component {
       console.log("Request failed", error);
     });
   }
-=======
-  
-  handleSubmit = () => {
-    console.log("CODE SUBMITTTED");
-    console.log(this.state.code);
-    //code_set is the function that has to be passed by the parent component.
-    this.props.code_set(this.state.code);
- 
-  };
->>>>>>> 892f830aaba6b8412ce6647eebd1786a469f15cb
   render() {
     return (
       <div>

@@ -18,9 +18,17 @@ export default class Drop extends React.Component {
     constructor(props) {
         super(props);
         this.state.name = this.props.name;
+        if(this.props.status===1)
+        {
+            this.state.status = "Contribute";
+     
+        }
+        else{
+            this.state.status = "Wanna Contribute";
+        }
+        
+    
     };
-    
-    
     
     handleLogoutClick = () => {
        
@@ -70,7 +78,10 @@ export default class Drop extends React.Component {
          window.location.reload();
           }
         return (
-            <Dropdown text={"Hello " + this.state.name} options={options} />
+            <div>            <Dropdown text={"Hello " + this.state.name} options={options} />
+            
+            {this.props.status==1 ? <Link to="/contribute">Contribute</Link> : <Link to="/contribute">Wanna Contribute</Link>}
+           </div>
 
         )
     }

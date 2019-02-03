@@ -25,6 +25,7 @@ export default class Header1 extends Component {
 
     this.state.username = this.props.username;
     this.state.loggedin = this.props.loggedin;
+    this.state.user_status= this.props.user_status;
     console.log("Header");
     console.log(props);
   }
@@ -38,29 +39,31 @@ export default class Header1 extends Component {
     this.state.loggedin = props.loggedin;
     this.state.username = props.username;
   }
-  // componentDidMount(){
-  //   const user_axios = axios.create({
-  //     withCredentials: true,
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "x-www-form-urlencoded"
-  //       },
-  //   });
-  //   user_axios.get("localhost://8080/user/").then(function(response){
-  //     console.log("RESPONSE",response.success)
-  //   if(response.success==0)
-  //   {this.setState({
-  //       loggedin: false,
-  //     });}
-  //     else{
-  //       this.setState({
-  //         loggedin:true,
-  //         name:response.user.username,
-  //       })
-  //       console.log("Changed Visibility");
-  //     }
-  //   })
-  // }
+
+
+  // // componentDidMount(){
+  // //   const user_axios = axios.create({
+  // //     withCredentials: true,
+  // //       headers: {
+  // //         Accept: "application/json",
+  // //         "Content-Type": "x-www-form-urlencoded"
+  // //       },
+  // //   });
+  // //   user_axios.get("localhost://8080/user/").then(function(response){
+  // //     console.log("RESPONSE",response.success)
+  // //   if(response.success==0)
+  // //   {this.setState({
+  // //       loggedin: false,
+  // //     });}
+  // //     else{
+  // //       this.setState({
+  // //         loggedin:true,
+  // //         name:response.user.username,
+  // //       })
+  // //       console.log("Changed Visibility");
+  // //     }
+  // //   })
+  // // }
   render() {
     return (
       <div className="container-fluid">
@@ -93,7 +96,7 @@ export default class Header1 extends Component {
               </li>
               <li className="nav-item right">
                 {this.state.loggedin ? (
-                  <Drop name={this.state.username} />
+                  <Drop name={this.state.username} status={this.state.user_status} />
                 ) : null}
               </li>
             </ul>
