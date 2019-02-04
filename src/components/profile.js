@@ -42,7 +42,7 @@ class Profile extends Component {
             email: response.email,
             institution: response.institution,
             age: response.age,
-            photo: response.photo
+            photo: "http://localhost:8080/public/" + response.photo
           });
         }
       });
@@ -73,6 +73,8 @@ class Profile extends Component {
         <Link to="/editProfile">Edit Profile</Link>
         <h1>Your Details: </h1>
         <br />
+
+        <img src={this.state.photo} />
         {this.state.username.length > 0 && (
           <h2>Username: {this.state.username}</h2>
         )}

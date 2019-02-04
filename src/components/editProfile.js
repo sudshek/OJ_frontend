@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import Header1 from "./header";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Modal } from "antd";
+import Upload from "antd/lib/upload";
+import "antd/lib/upload/style/css";
 import {
   Header,
   Grid,
@@ -29,11 +32,49 @@ class EditProfile extends Component {
     email: "",
     institution: "",
     age: "",
-    photo: ""
+    photo: "",
+    fileURL: [],
+    fileList: [],
+    previewVisible: false,
+    previewImage: "",
+    active: false,
+    show: false
   };
 
-  handleChange = (e, { value }) => this.setState({ value });
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+    console.log([name]);
+    console.log(value);
+  };
 
+  handlePreview = file => {
+    this.setState({
+      previewImage: file.url || file.thumbUrl,
+      previewVisible: true
+    });
+  };
+  handleSubmit = () => {
+    console.log("FORM SUBMITTED");
+
+    const data = new FormData();
+    data.append("file", this.state.fileList);
+    data.append("filename", this.state.username);
+    data.append("displayName", this.state.displayName);
+    data.append("age", this.state.age);
+    data.append("name", this.state.name);
+    data.append("institution", this.state.institution);
+
+    console.log("FILE SENT : ", this.state.fileList);
+    axios
+      .post("http://localhost:8080/user/upload_dp", data)
+      .then(function(response) {
+        // this.setState({ imageURL: `http://localhost:8000/${body.file}`, uploadStatus: true });
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
   getuser = () => {
     var self = this;
     const user_axios = axios.create({
@@ -69,6 +110,11 @@ class EditProfile extends Component {
   componentDidMount() {
     this.getuser();
   }
+  fileChangedHandler = event => {
+    const file = event.target.files[0];
+    this.state.fileList = event.target.files[0];
+    console.log(this.state.fileList);
+  };
   render() {
     const {
       username,
@@ -78,7 +124,11 @@ class EditProfile extends Component {
       institution,
       age,
       photo,
-      loggedin
+      loggedin,
+      fileList,
+      fileURL,
+      previewImage,
+      previewVisible
     } = this.state;
     const { value } = this.state;
     return (
@@ -87,22 +137,38 @@ class EditProfile extends Component {
         <br />
         <br />
         <Segment inverted>
-          <Form inverted>
-            <Form.Input width={6} label="First name" placeholder="First name" />
+          <Form inverted onSubmit={this.handleSubmit}>
+            <Form.Input
+              width={6}
+              label="Name"
+              placeholder="Name"
+              name="name"
+              onChange={this.handleChange}
+            />
             <br />
             <Form.Input
               width={6}
               label="Display Name"
               placeholder="Display Name"
+              name="displayName"
+              onChange={this.handleChange}
             />
             <br />
-            <Form.Select
+            {/* <Form.Select
               width={4}
               label="Gender"
               options={options}
               placeholder="Gender"
+              onChange={this.handleChange}
+            /> */}
+            <Form.Input
+              width={2}
+              type="number"
+              label="Age"
+              placeholder="Age"
+              name="age"
+              onChange={this.handleChange}
             />
-            <Form.Input width={2} type="number" label="Age" placeholder="Age" />
 
             {/* <Form.TextArea
             label="About"
@@ -113,7 +179,26 @@ class EditProfile extends Component {
               width={10}
               label="College/Institution"
               placeholder="College/Institution"
+              name="institution"
+              onChange={this.handleChange}
             />
+            {/* <Upload
+              action={"http://localhost:8080/user/upload"}
+              listType="picture-card"
+              data={{
+                username: username
+              }}
+              fileList={fileList}
+              accept="image/*"
+              multiple={true}
+              onPreview={this.handlePreview}
+              onChange={this.handleChangeImage}
+              className="upload-list-inline"
+            >
+              {fileList.length >= 2 ? null : uploadButton}
+            </Upload> */}
+
+            <Form.Input type="file" onChange={this.fileChangedHandler} />
             <Form.Button>Submit</Form.Button>
           </Form>
         </Segment>
