@@ -19,7 +19,7 @@ export default class Homepage extends Component {
       }
     });
     console.log("asdasd00");
-    user_axios.get("http://localhost:8080/user/").then(function (response) {
+    user_axios.get("http://localhost:8080/user/").then(function(response) {
       response = response.data;
       console.log("RESPONSE", response);
       if (response.success === 0) {
@@ -29,8 +29,7 @@ export default class Homepage extends Component {
       } else {
         console.log("HERERERER");
         this.setState({
-          loggedin: true,
-          
+          loggedin: true
         });
         console.log("Changed Visibility");
       }
@@ -54,35 +53,41 @@ export default class Homepage extends Component {
     });
     var self = this;
     console.log("asdasd00");
-    user_axios.get("http://localhost:8080/user/profile").then(function (response) {
-      response = response.data;
-      console.log("RESPONSE", response);
-      if (response.success === 0) {
-        console.log("FAILURE1");
-        self.setState({
-          loggedin: false
-        });
-        console.log("FAILURE2");
-      } else {
-        console.log("HERERERER");
-        console.log(response.user);
-        self.setState({
-          loggedin: true,
-          username: response.user.username,
-          user_status: response.user.status
-        });
-        console.log("Changed Visibility");
-      }
-      this.setState({ complete: true });
-      console.log("asdmasjbdajasd");
-      console.log(this.state);
-    });
+    user_axios
+      .get("http://localhost:8080/user/profile")
+      .then(function(response) {
+        response = response.data;
+        console.log("RESPONSE", response);
+        if (response.success === 0) {
+          console.log("FAILURE1");
+          self.setState({
+            loggedin: false
+          });
+          console.log("FAILURE2");
+        } else {
+          console.log("HERERERER");
+          console.log(response.user);
+          self.setState({
+            loggedin: true,
+            username: response.user.username,
+            user_status: response.user.status
+          });
+          console.log("Changed Visibility");
+        }
+        this.setState({ complete: true });
+        console.log("asdmasjbdajasd");
+        console.log(this.state);
+      });
   }
   render() {
-    const { username, loggedin , user_status} = this.state;
+    const { username, loggedin, user_status } = this.state;
     return (
       <div>
-        <Header1 username={this.state.username} loggedin={this.status.loggedin} user_status={this.status.user_status}/>
+        <Header1
+          username={this.state.username}
+          loggedin={this.state.loggedin}
+          user_status={this.state.user_status}
+        />
       </div>
     );
   }
