@@ -30,7 +30,7 @@ export default class Homepage extends Component {
         console.log("HERERERER");
         this.setState({
           loggedin: true,
-          username: response.user
+          
         });
         console.log("Changed Visibility");
       }
@@ -54,7 +54,7 @@ export default class Homepage extends Component {
     });
     var self = this;
     console.log("asdasd00");
-    user_axios.get("http://localhost:8080/user/").then(function (response) {
+    user_axios.get("http://localhost:8080/user/profile").then(function (response) {
       response = response.data;
       console.log("RESPONSE", response);
       if (response.success === 0) {
@@ -68,7 +68,8 @@ export default class Homepage extends Component {
         console.log(response.user);
         self.setState({
           loggedin: true,
-          username: response.user
+          username: response.user.username,
+          user_status: response.user.status
         });
         console.log("Changed Visibility");
       }
@@ -78,10 +79,10 @@ export default class Homepage extends Component {
     });
   }
   render() {
-    const { username, loggedin } = this.state;
+    const { username, loggedin , user_status} = this.state;
     return (
       <div>
-        <Header1 username={username} loggedin={loggedin} />
+        <Header1 username={this.state.username} loggedin={this.status.loggedin} user_status={this.status.user_status}/>
       </div>
     );
   }

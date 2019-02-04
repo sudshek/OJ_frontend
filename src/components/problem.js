@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import Ide from "../components/ide";
 import querystring from "querystring";
-import request from "request";
 
 class Problem extends Component {
   state = {
@@ -31,7 +30,7 @@ class Problem extends Component {
     })
       .then(function(data) {
         data.json().then(value => {
-          console.log(value.question.question_id);
+          //console.log(value.question.question_id);
           self.setState({
             question_id: value.question.question_id,
             text: value.question.text,

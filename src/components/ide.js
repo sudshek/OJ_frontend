@@ -48,24 +48,10 @@ class Ide extends Component {
       },
       body: data
     })
-      .then(function(data) {
-        data.json().then(value => {
-          console.log("JDOODLE KI MKC", value);
-          if (value.success === 0) {
-            self.setState({
-              errorMessage: "Error/Try Again"
-            });
-          } else {
-            self.setState({
-              errorMessage: value.output
-            });
-          }
-        });
-      })
-      .catch(function(error) {
-        console.log("Request failed", error);
-      });
-  };
+    .catch(function(error) {
+      console.log("Request failed", error);
+    });
+  }
   render() {
     return (
       <div>
